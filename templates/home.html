@@ -1,10 +1,65 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <title>$Title$</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Micro blog</title>
+    <link rel="stylesheet" href="/static/css/styles.css">
 </head>
 <body>
-$END$
+    <header class="navbar">
+        <div class="navbar__brand">
+            <img class="navbar__logo" src="/static/logo.svg" alt="The Microblog logo">Microblog
+        </div>
+        <ul class="navbar__navigation">
+            <li class="navbar__navigation-item"><a href="#" class="navbar__link">Resent</a></li>
+            <li class="navbar__navigation-item"><a href="#" class="navbar__link">Calendar</a></li>
+        </ul>
+
+    </header>
+    <main class="main">
+        <section>
+            <h1>Add new entry</h1>
+            <form class="form" action="/entry" method="POST">
+                <p class="form__input">
+                    <label class="form__label" for="entry">Entry contest:</label>
+                    <textarea class="form__textarea" name="content" id="entry"></textarea>
+                </p>
+                <button class="form__submit" type="submit">Add entry</button>
+            </form>
+        </section>
+        <section>
+            <h1>Resent posts</h1>
+            <article class="entry">
+                <div>
+                    <h2 class="entry__title">Lorem ipsum dolor sit amet</h2>
+                    <time class="entry__date" datetime="24-10-2019">• Oct 24</time>
+                </div>
+                <p class="entry__content">
+                    In a consectetur orci. Pellentesque neque mauris, sagittis vel lacus eget, finibus semper leo.
+                    Etiam lectus metus, venenatis nec aliquet a, dignissim vitae enim. Suspendisse vel nisl erat.
+                </p>
+            </article>
+        </section>
+    </main>
+    <footer class="footer">
+        <div class="footer__content">
+            <section class="left">
+                <a class="footer__item" href="#">Made by Artem Menzheres</a>
+                <a class="footer__item" href="#">Check out my other projects</a>
+            </section>
+            <section class="right">
+                <div class="footer__column">
+                    <a class="footer__item" href="#">Recent</a>
+                    <a class="footer__item" href="#">Calendar</a>
+                </div>
+                <div class="footer__column">
+                    <a class="footer__item" href="#">About</a>
+                    <a class="footer__item" href="#">How it was made</a>
+                </div>
+            </section>
+        </div>
+    </footer>
+
 </body>
 </html>
