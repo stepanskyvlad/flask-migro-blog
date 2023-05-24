@@ -20,7 +20,7 @@
     <main class="main">
         <section>
             <h1>Add new entry</h1>
-            <form class="form" action="/entry" method="POST">
+            <form class="form" method="POST">
                 <p class="form__input">
                     <label class="form__label" for="entry">Entry contest:</label>
                     <textarea class="form__textarea" name="content" id="entry"></textarea>
@@ -30,16 +30,17 @@
         </section>
         <section>
             <h1>Resent posts</h1>
+            {% for entry in entries %}
             <article class="entry">
                 <div>
-                    <h2 class="entry__title">Lorem ipsum dolor sit amet</h2>
-                    <time class="entry__date" datetime="24-10-2019">• Oct 24</time>
+                    <h2 class="entry__title">{{ entry[0] | truncate(30, true) }}</h2>
+                    <time class="entry__date" datetime="{{ entry[1] }}">• {{ entry[2] }}</time>
                 </div>
                 <p class="entry__content">
-                    In a consectetur orci. Pellentesque neque mauris, sagittis vel lacus eget, finibus semper leo.
-                    Etiam lectus metus, venenatis nec aliquet a, dignissim vitae enim. Suspendisse vel nisl erat.
+                    {{ entry[0] }}
                 </p>
             </article>
+            {% endfor %}
         </section>
     </main>
     <footer class="footer">
