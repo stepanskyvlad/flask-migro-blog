@@ -1,8 +1,9 @@
 import datetime
 import os
-from flask import Flask, render_template, request
+from flask import Flask, render_template, request, redirect, url_for
 from pymongo import MongoClient
 from dotenv import load_dotenv
+from collections import defaultdict
 
 load_dotenv()
 
@@ -13,6 +14,7 @@ def create_app():
     app.db = client.microblog
 
     habits = ['Test habit', 'Test habit 2']
+    completions = defaultdict(list)
 
     @app.route('/', methods=["GET", "POST"])
     def home():
@@ -51,7 +53,8 @@ def create_app():
             "habit.html",
             habits=habits,
             title="Habit Tracker",
-            selected_date=selected_date
+            selected_date=selected_date,
+            completions=completions[selected_date],
             )
 
     @app.route("/habit/add/", methods=["GET", "POST"])
@@ -63,6 +66,15 @@ def create_app():
             title="Habit Tracker - Add Habit",
             selected_date=datetime.date.today()
         )
+
+    @app.route("/habit/complete/", methods=["POST"])
+    def complete():
+        date_string = request.form.get("date")
+        habit_name = request.form.get("habitName")
+        date = datetime.date.fromisoformat(date_string)
+        completions[date].append(habit_name)
+
+        return redirect(url_for("habit", date=date_string))
 
     return app
 
