@@ -45,7 +45,7 @@ def habit():
     if date_str:
         selected_date = datetime.datetime.fromisoformat(date_str)
     else:
-        selected_date = datetime.datetime.today()
+        selected_date = today_at_midnight()
 
     habits_on_date = current_app.db.habits.find({"added": {"$lte": selected_date}})
     completions = [
@@ -64,10 +64,12 @@ def habit():
 @pages.route("/habit/add/", methods=["GET", "POST"])
 def add_habit():
     today = today_at_midnight()
+
     if request.form:
         current_app.db.habits.insert_one(
             {"_id": uuid.uuid4().hex, "added": today, "name": request.form.get("habit")}
         )
+
     return render_template(
         "add_habit.html",
         title="Habit Tracker - Add Habit",
@@ -78,8 +80,8 @@ def add_habit():
 @pages.route("/habit/complete/", methods=["POST"])
 def complete():
     date_string = request.form.get("date")
-    habit_name = request.form.get("habitId")
     date = datetime.datetime.fromisoformat(date_string)
+    habit_name = request.form.get("habitId")
     current_app.db.completions.insert_one({"date": date, "habit": habit_name})
 
     return redirect(url_for("habits.habit", date=date_string))
