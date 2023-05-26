@@ -14,7 +14,7 @@
             </a>
         </div>
         <ul class="navbar__navigation">
-            <li class="navbar__navigation-item"><a href="{{ url_for('habits.home') }}" class="navbar__link">Resent</a></li>
+            <li class="navbar__navigation-item"><a href="{{ url_for('habits.home') }}" class="navbar__link">Recent</a></li>
             <li class="navbar__navigation-item"><a href="{{ url_for('habits.habit') }}" class="navbar__link">Habit Calendar</a></li>
         </ul>
 
@@ -48,18 +48,18 @@
     <footer class="footer">
         <div class="footer__content">
             <section class="left">
-                <a class="footer__item" href="#">Made by Artem Menzheres</a>
-{#                <a class="footer__item" href="#">Check out my other projects</a>#}
+                <a class="footer__item" href="#">Made by Vladyslav Yarema</a>
+                <a class="footer__item" href="#">Check out my other projects</a>
             </section>
             <section class="right">
                 <div class="footer__column">
                     <a class="footer__item" href="{{ url_for('habits.home') }}">Recent</a>
                     <a class="footer__item" href="{{ url_for('habits.habit') }}">Habit Calendar</a>
                 </div>
-{#                <div class="footer__column">#}
-{#                    <a class="footer__item" href="#">About</a>#}
-{#                    <a class="footer__item" href="#">How it was made</a>#}
-{#                </div>#}
+                <div class="footer__column">
+                    <a class="footer__item" href="#">About</a>
+                    <a class="footer__item" href="#">How it was made</a>
+                </div>
             </section>
         </div>
     </footer>
