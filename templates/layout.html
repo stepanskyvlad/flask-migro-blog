@@ -13,7 +13,10 @@
 
     <body>
         <header class="header">
-            <h1 class="header__logo"><a href="{{ url_for('habits.home') }}" class="header__link">Microblog</a></h1>
+            <a href="{{ url_for('habits.home') }}" class="navbar__brand">
+            <img class="navbar__logo" src="/static/logo.svg" alt="The Microblog logo">
+                Journal & Habits
+            </a>
             <h1 class="header__logo"><a href="{{ url_for('habits.habit') }}" class="header__link">Habits</a></h1>
             {% if "add" not in request.endpoint %}
                 <a href="{{ url_for('habits.add_habit') }}" class="header__link">+ Add new</a>

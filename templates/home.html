@@ -10,11 +10,12 @@
     <header class="navbar">
         <div class="navbar__brand">
             <a href="{{ url_for('habits.home') }}" class="navbar__brand">
-            <img class="navbar__logo" src="/static/logo.svg" alt="The Microblog logo">Microblog
+            <img class="navbar__logo" src="/static/logo.svg" alt="The Microblog logo">
+                Journal & Habits
             </a>
         </div>
         <ul class="navbar__navigation">
-            <li class="navbar__navigation-item"><a href="{{ url_for('habits.home') }}" class="navbar__link">Recent</a></li>
+            <li class="navbar__navigation-item"><a href="{{ url_for('habits.home') }}" class="navbar__link">Blog</a></li>
             <li class="navbar__navigation-item"><a href="{{ url_for('habits.habit') }}" class="navbar__link">Habit Calendar</a></li>
         </ul>
 
